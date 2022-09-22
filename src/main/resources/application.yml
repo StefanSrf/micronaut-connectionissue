@@ -7,7 +7,7 @@ datasources:
     username: sa
     password: ''
     driverClassName: org.h2.Driver
-    schema-generate: CREATE_DROP
+    schema-generate: CREATE
     dialect: H2
 netty:
   default:

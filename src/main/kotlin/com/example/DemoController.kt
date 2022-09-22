@@ -14,8 +14,10 @@ class DemoController(
 
     @Get("testParallelDbInvocation")
     fun testParallelDbInvocation(): Mono<String> {
-        return demoRepository.save(DemoEntity(1, "test"))
-            .doOnNext { logger.info("entity saved") }
+        return demoRepository.findById(1L)
+            .doOnNext { logger.info("after first db interaction") }
+// if no previous transaction was running, the race-condition does not show
+//        return Mono.just("")
             .flatMap {
                 Mono.zip(
                     Mono.just("").doOnNext { logger.info("after no db interaction mono 1") },
