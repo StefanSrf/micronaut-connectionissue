@@ -13,3 +13,8 @@ netty:
   default:
     allocator:
       max-order: 3
+
+flyway:
+  datasources:
+    default:
+      enabled: true
